@@ -811,7 +811,13 @@ class BedrockConverseModel(Model[BaseClient]):
             elif (unified_tier := model_settings.get('service_tier')) and unified_tier != 'auto':
                 params['serviceTier'] = {'type': unified_tier}
 
-        if additional_model_requests_fields := self._translate_thinking(settings, model_request_parameters):
+        additional_model_requests_fields = self._translate_thinking(settings, model_request_parameters) or {}
+        # `inferenceConfig` has no `topK`, so the unified `top_k` setting goes through
+        # `additionalModelRequestFields` like other model-specific params (e.g. Anthropic `top_k`),
+        # without clobbering a `bedrock_additional_model_requests_fields` override.
+        if (top_k := settings.get('top_k')) is not None and 'top_k' not in additional_model_requests_fields:
+            additional_model_requests_fields['top_k'] = top_k
+        if additional_model_requests_fields:
             params['additionalModelRequestFields'] = additional_model_requests_fields
 
         with _map_api_errors(self.model_name):
