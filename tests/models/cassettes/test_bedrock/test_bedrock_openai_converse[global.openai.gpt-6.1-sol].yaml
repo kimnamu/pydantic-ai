@@ -1,0 +1,54 @@
+version: 1
+interactions:
+- request:
+    method: POST
+    uri: >-
+      https://bedrock-runtime.us-east-1.amazonaws.com/model/global.openai.gpt-6.1-sol/converse
+    headers:
+      amz-sdk-invocation-id:
+      - b7e3d1a6-b308-47e4-8346-26b816f9ad4d
+      amz-sdk-request:
+      - attempt=1
+      content-length:
+      - "127"
+      content-type:
+      - application/json
+    body:
+      type: json
+      content:
+        messages:
+        - role: user
+          content:
+          - text: "Reply with exactly the word: OK"
+        system: []
+        inferenceConfig: {}
+  response:
+    status: 200
+    headers:
+      connection:
+      - keep-alive
+      content-length:
+      - "341"
+      content-type:
+      - application/json
+    body:
+      type: json
+      content:
+        metrics:
+          latencyMs: 875
+        output:
+          message:
+            content:
+            - text: OK
+            role: assistant
+        stopReason: end_turn
+        usage:
+          cacheReadInputTokenCount: 0
+          cacheReadInputTokens: 0
+          cacheWriteInputTokenCount: 0
+          cacheWriteInputTokens: 0
+          inputTokens: 13
+          outputTokens: 5
+          serverToolUsage: {}
+          totalTokens: 18
+  recorded_at: 2026-10-05T23:24:50.181702+00:00

@@ -1,0 +1,41 @@
+version: 1
+interactions:
+- request:
+    method: POST
+    uri: >-
+      https://bedrock-runtime.us-east-1.amazonaws.com/model/global.openai.gpt-6.1-sol/converse
+    headers:
+      amz-sdk-invocation-id:
+      - 7dbad6f2-d6a7-4dd2-a750-3e23bc0de4d5
+      amz-sdk-request:
+      - attempt=1
+      content-length:
+      - "129"
+      content-type:
+      - application/json
+    body:
+      type: json
+      content:
+        messages:
+        - role: user
+          content:
+          - text: What is 2+2?
+        inferenceConfig:
+          maxTokens: 64
+          temperature: 0.2
+  response:
+    status: 400
+    headers:
+      connection:
+      - keep-alive
+      content-length:
+      - "98"
+      content-type:
+      - application/json
+    body:
+      type: json
+      content:
+        message: >-
+          This model doesn't support the temperature field. Remove temperature and try
+          again.
+  recorded_at: 2026-10-05T23:24:50.656523+00:00

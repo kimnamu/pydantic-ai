@@ -243,6 +243,7 @@ async def test_bedrock_model(allow_model_requests: None, bedrock_provider: Bedro
         'global.openai.gpt-6-sol',
         'global.openai.gpt-6-luna',
         'global.openai.gpt-6-astra',
+        'global.openai.gpt-6.1-sol',
     ],
 )
 @pytest.mark.vcr(additional_matchers=['body'])
@@ -7416,6 +7417,7 @@ BEDROCK_OPENAI_CONVERSE_MODELS_WITHOUT_SAMPLING_SETTINGS = [
     'global.openai.gpt-6-sol',
     'global.openai.gpt-6-luna',
     'global.openai.gpt-6-astra',
+    'global.openai.gpt-6.1-sol',
 ]
 
 
